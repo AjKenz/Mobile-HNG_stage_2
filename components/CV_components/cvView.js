@@ -42,19 +42,18 @@ const styles = StyleSheet.create({
         padding: 10
     },
     idContainer: {
-        marginBottom: 20
+        marginBottom: 20,
     },
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        padding: 10
+        paddingVertical: 15
     },
     textContainer: {
-        backgroundColor: 'white',
-        width: '100%',
+        backgroundColor: '#F6F8FA',
         justifyContent: 'center',
-        borderRadius: 5,
-        padding: 10,
+        borderRadius: 10,
+        padding: 15,
         elevation: 5,
         shadowColor: 'black',
         shadowOffset: { width: 0, height: 2 },
@@ -64,9 +63,11 @@ const styles = StyleSheet.create({
     },
     displayText: {
         fontSize: 20,
+        color: 'gray',
+        fontWeight: 'bold'
     },
     button: {
-        backgroundColor: '#00ACED',
+        backgroundColor: '#5BBCBF',
         width: '50%',
         marginTop: 30,
         borderRadius: 10,
@@ -83,6 +84,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 20,
         color: 'white',
+        fontWeight: 'bold'
     }
 })
 

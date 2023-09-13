@@ -27,7 +27,7 @@ const CVEdit = ({cvData, onSave, }) => {
                 <TextInput placeholder='Enter Your Full GitHub Handle' value={githubHandle} onChangeText={setGithubHandle} style={styles.input}/>
             </View>
             <View style={styles.idContainer}>
-                <Text style={styles.title}>Bio</Text>
+                <Text style={[styles.title, {marginBottom: 10}]}>Bio</Text>
                 <TextInput placeholder='Enter Your bio' value={bio} onChangeText={setBio} multiline style={styles.input}/>
             </View>
             <TouchableOpacity onPress={saveChanges} style={styles.button}>
@@ -48,18 +48,17 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        padding: 10,
-
+        paddingVertical: 10
     },
     input: {
         borderBottomWidth: 1,
         borderColor: 'gray', 
-        padding: 10, 
+        paddingVertical: 10, 
         fontSize: 16, 
         marginBottom: 10,
     },
     button: {
-        backgroundColor: '#00ACED',
+        backgroundColor: '#5BBCBF',
         width: '50%',
         marginTop: 30,
         borderRadius: 10,

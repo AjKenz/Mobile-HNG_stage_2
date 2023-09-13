@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StatusBar, StyleSheet, Text, View } from 'react-native';
+import { StatusBar, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import CVView from './components/CV_components/cvView';
 import CVEdit from './components/CV_components/cvEdit';
 
@@ -8,7 +8,7 @@ export default function App() {
     fullName: 'Ajibise Kehinde Ifeoluwa',
     slackUsername: 'AjKenz',
     githubHandle: 'AjKenz',
-    bio: 'Software Developer',
+    bio: 'Software developer with a passion for elegant solutions and a commitment to clean, efficient code',
   };
 
   const [cvData, setCvData] = useState(initialCVData);
@@ -23,12 +23,22 @@ export default function App() {
     setEdit(false);
   };
 
+  const renderHeader = () => {
+    return (
+      <View style={styles.header}>
+        <StatusBar backgroundColor="#5BBCBF" barStyle="light-content" />
+        <TouchableOpacity onPress={() => setEdit(false)} style={styles.backButton}>
+          {edit && <Text style={styles.backArrow}>←</Text>}
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>My CV</Text>
+        <View />
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <StatusBar backgroundColor="#F6F8FA" barStyle="dark-content" />
-        <Text style={styles.headerTitle}>My CV</Text>
-      </View>
+      {renderHeader()}
 
       <View style={styles.body}>
         {edit ? (
@@ -36,7 +46,6 @@ export default function App() {
         ) : (
           <CVView cvData={cvData} goToEdit={goToEdit} />
         )}
-
       </View>
     </View>
   );
@@ -45,26 +54,34 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F6F8FA',
+    backgroundColor: '#fff',
   },
   header: {
-    backgroundColor: '#00ACED',
+    backgroundColor: '#5BBCBF',
     paddingTop: 50 + StatusBar.currentHeight,
     paddingHorizontal: 20,
     paddingBottom: 10,
     borderBottomWidth: 1,
     borderBottomColor: 'lightgray',
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'space-between', 
+  },
+  backButton: {
+  },
+  backArrow: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
   },
   headerTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#fff'
+    color: '#fff',
   },
   body: {
     flex: 1,
-    top: 50,
-  }
+    top: 10,
+    padding: 10,
+  },
 });
