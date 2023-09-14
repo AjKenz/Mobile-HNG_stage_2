@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StatusBar, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StatusBar, StyleSheet, Text, View, TouchableOpacity, Platform, ScrollView } from 'react-native'; 
+
 import CVView from './components/CV_components/cvView';
 import CVEdit from './components/CV_components/cvEdit';
 
@@ -24,8 +25,10 @@ export default function App() {
   };
 
   const renderHeader = () => {
+    const paddingTop = Platform.OS === 'ios' ? 50 + StatusBar.currentHeight : StatusBar.currentHeight;
+
     return (
-      <View style={styles.header}>
+      <View style={[styles.header, { paddingTop }]}>
         <StatusBar backgroundColor="#5BBCBF" barStyle="light-content" />
         <TouchableOpacity onPress={() => setEdit(false)} style={styles.backButton}>
           {edit && <Text style={styles.backArrow}>←</Text>}
@@ -40,13 +43,16 @@ export default function App() {
     <View style={styles.container}>
       {renderHeader()}
 
-      <View style={styles.body}>
+      <ScrollView>
+              <View style={styles.body}>
         {edit ? (
           <CVEdit cvData={cvData} onSave={saveChanges} />
         ) : (
           <CVView cvData={cvData} goToEdit={goToEdit} />
         )}
       </View>
+
+      </ScrollView>
     </View>
   );
 }
@@ -58,17 +64,15 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#5BBCBF',
-    paddingTop: 50 + StatusBar.currentHeight,
     paddingHorizontal: 20,
     paddingBottom: 10,
     borderBottomWidth: 1,
     borderBottomColor: 'lightgray',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between', 
+    justifyContent: 'space-between',
   },
-  backButton: {
-  },
+  backButton: {},
   backArrow: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -81,7 +85,6 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 1,
-    top: 10,
     padding: 10,
   },
 });
