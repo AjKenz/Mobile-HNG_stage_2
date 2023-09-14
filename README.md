@@ -19,6 +19,13 @@ My CV App is a mobile application that allows you to create, view, and edit your
 
 - **Real-time Updates**: After making changes to your CV, returning to the main screen immediately reflects the alterations, ensuring a dynamic user experience.
 
+## Appetize
+
+You can test the Slack Identity Mobile App using the Appetize.io Emulator. Below is the link to the emulator:
+
+- [Appetize Link](https://appetize.io/app/n7tehjk5aohkuo7kfjlufgpwmi)
+- Device: Specify the device name and version that your project works on.
+
 ## Setup Instructions
 
 To run the My CV App on your local machine, follow these steps:
